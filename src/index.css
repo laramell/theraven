@@ -103,3 +103,18 @@ p {
 .active {
   display: flex;
 }
+body .max-screen {
+  display: none;
+}
+@media (max-width: 800px) {
+  body {
+    background-color: var(--black);
+  }
+  body .max-screen {
+    display: block;
+    color: #FFFFFF;
+  }
+  body #root {
+    display: none;
+  }
+}
