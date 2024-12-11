@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import FrameCard from "../FrameCard/FrameCard";
 import "./Animation.css";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const framesOriginals = [
     { id: 1, src: "/assets/frames/1.png" },
@@ -13,7 +13,6 @@ const framesOriginals = [
     { id: 7, src: "/assets/frames/4.png" },
     { id: 8, src: "/assets/frames/4.png" }
 ];
-
 
 const Animation = () => {
     const navigate = useNavigate();
@@ -27,9 +26,9 @@ const Animation = () => {
 
         const ravenContainer = document.getElementById("raven-container");
 
-        document.body.classList.add('animation');
+        document.body.classList.add("animation");
         if (ravenContainer) {
-            ravenContainer.classList.add('animation');
+            ravenContainer.classList.add("animation");
         }
 
         if (location.state?.frames) {
@@ -37,24 +36,20 @@ const Animation = () => {
         }
         // Remove a classe "animation" do body quando o componente é desmontado
         return () => {
-            document.body.classList.remove('animation');
+            document.body.classList.remove("animation");
 
             if (ravenContainer) {
-                ravenContainer.classList.remove('animation');
+                ravenContainer.classList.remove("animation");
             }
         };
     }, [location.state]);
 
-
-    const [animationRunning, setAnimationRunning] = useState<boolean>(false);
-    const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
-    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
     const [frameRate, setFrameRate] = useState(2); // Frames por segundo
 
     // Função para apagar um frame
     const deleteFrame = (id: number) => {
         setFrames(frames.filter((frame) => frame.id !== id));
-    }
+    };
 
     // Função para duplicar frame
     const duplicateFrame = (id: number) => {
@@ -76,34 +71,7 @@ const Animation = () => {
         setFrames(framesOriginals); // Restaura para o estado original
     };
 
-    // Inicia o drag com o ID do frame
-    const handleDragStart = (id: number) => {
-        setDraggedFrameId(id);
-    };
-
-    // Permite o drop
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-        event.preventDefault();
-    };
-
-    // Finaliza o drop, movendo o frame
-    const handleDrop = (id: number) => {
-        if (draggedFrameId === null || draggedFrameId === id) return;
-
-        const draggedIndex = frames.findIndex((frame) => frame.id === draggedFrameId);
-        const targetIndex = frames.findIndex((frame) => frame.id === id);
-
-        // Reordena os frames no array
-        const updatedFrames = [...frames];
-        const [draggedFrame] = updatedFrames.splice(draggedIndex, 1); // Remove o arrastado
-        updatedFrames.splice(targetIndex, 0, draggedFrame); // Adiciona no alvo
-
-        setFrames(updatedFrames);
-        setDraggedFrameId(null); // Reseta o estado
-    };
-
-    // Função para iniciar a animação
-
+    // Inicia a animação
     const startAnimation = () => {
         navigate("/movie", {
             state: {
@@ -111,36 +79,35 @@ const Animation = () => {
                 frameRate,
             },
         });
-    }
-
-    // Função para parar a animacao
-    const stopAnimation = () => {
-        setAnimationRunning(false);
-        if (intervalId) {
-            clearInterval(intervalId);
-        }
-    }
-
+    };
 
     return (
-        <main id="animation" className="">
+        <main id="animation">
             <div className="head">
                 <div className="title">
                     <h2>Edgar Allan Poe</h2>
                     <h1>The Raven</h1>
                 </div>
                 <span></span>
-                <h3>Editor de<br/>KeyFrames</h3>
+                <h3>Editor de<br />KeyFrames</h3>
             </div>
-            <div style={{textAlign: "center"}}>
-                <div className="frame-group" style={{display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px"}}>
+            <div style={{ textAlign: "center" }}>
+                <div
+                    className="frame-group"
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        gap: "10px",
+                    }}
+                >
                     {frames.map((frame, index) => (
                         <FrameCard
                             frame={frame} // Passando o frame inteiro
                             index={index} // Passando o índice
-                            handleDragStart={handleDragStart} // Passando as funções
-                            handleDragOver={handleDragOver}
-                            handleDrop={handleDrop}
+                            handleDragStart={(id) => setDraggedFrameId(id)} // Passando a função
+                            handleDragOver={(e) => e.preventDefault()} // Passando a função
+                            handleDrop={(id) => handleDrop(id)} // Passando a função
                             deleteFrame={deleteFrame}
                             duplicateFrame={duplicateFrame}
                         />
@@ -173,50 +140,21 @@ const Animation = () => {
                             </button>
                         </div>
                     </div>
-                   <div className="dupla-btn">
-                       {/* Botão de Reset */}
-                       <button
-                           onClick={resetFrames}
-                           id="reset"
-                       >
-                           Reset
-                       </button>
-                       {/*
-                    <button onClick={stopAnimation} disabled={!animationRunning}>
-                        Stop Animation
-                    </button>*/}
+                    <div className="dupla-btn">
+                        {/* Botão de Reset */}
+                        <button onClick={resetFrames} id="reset">
+                            Reset
+                        </button>
 
-
-                       {/* Botão de animação */}
-                       <button id="play-now" onClick={startAnimation} disabled={animationRunning}>
-                           Play now
-                       </button>
-                   </div>
-                </div>
-                {/* Exibindo a animação */}
-                {animationRunning && (
-                    <div style={{
-                        marginTop: "20px",
-                        padding: "20px",
-                        border: "1px solid black",
-                        borderRadius: "10px",
-                        backgroundColor: "#f5f5f5",
-                        width: "400px",
-                        height: "300px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}>
-                        <img
-                            src={frames[currentFrameIndex]?.src}
-                            alt={`Frame ${frames[currentFrameIndex].id}`}
-                            style={{width: "100%", height: "auto"}}
-                        />
+                        {/* Botão de animação */}
+                        <button id="play-now" onClick={startAnimation}>
+                            Play now
+                        </button>
                     </div>
-                )}
+                </div>
             </div>
         </main>
-    )
+    );
 };
 
 export default Animation;
