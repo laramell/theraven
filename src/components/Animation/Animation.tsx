@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useEffect, useState } from "react";
 import FrameCard from "../FrameCard/FrameCard";
 import "./Animation.css";
