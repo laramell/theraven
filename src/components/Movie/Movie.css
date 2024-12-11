@@ -1,0 +1,22 @@
+.movie .controls {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+body.movie main .controls button  {
+    font-size: 1.2rem;
+    border: none;
+    padding: 20px 60px;
+    cursor: pointer;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 700;
+}
+
+body.movie main .controls button:first-child {
+    margin-right: 10px;
+}
+body.movie main .controls button:last-child {
+    background-color: var(--yellow);
+}

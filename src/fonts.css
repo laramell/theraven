@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Aktiv'; /* Nome que você dará à fonte */
+    src: url('../public/assets/fonts/AktivGrotesk-Black.ttf') format('truetype');
+    font-weight: 900; /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal;  /* Estilo da fonte (normal, italic, etc.) */
+}
+@font-face {
+    font-family: 'Aktiv'; /* Nome que você dará à fonte */
+    src: url('../public/assets/fonts/AktivGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700; /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal;  /* Estilo da fonte (normal, italic, etc.) */
+}
+@font-face {
+    font-family: 'Aktiv'; /* Nome que você dará à fonte */
+    src: url('../public/assets/fonts/AktivGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500; /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal;  /* Estilo da fonte (normal, italic, etc.) */
+}
+@font-face {
+    font-family: 'Aktiv'; /* Nome que você dará à fonte */
+    src: url('../public/assets/fonts/AktivGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400; /* Peso da fonte (normal, bold, etc.) */
+    font-style: normal;  /* Estilo da fonte (normal, italic, etc.) */
+}

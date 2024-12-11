@@ -1,0 +1,37 @@
+body.about {
+    background: var(--brown) !important;
+}
+body.screen {
+    background: var(--yellow);
+}
+#raven-container.about {
+    transform: rotate(325deg);
+    top: -150%;
+}
+#raven-container.screen {
+    transform: rotate(280deg);
+    top: -60%;
+}
+
+#raven-container.screen img {
+    width: 170%;
+}
+main#about h1,
+main#screen h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 6rem;
+}
+main#about h2,
+main#screen h2{
+    font-size: 2rem;
+    font-weight: 500;
+}
+main#about p,
+main#screen p {
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+main#about .button-grup {
+    justify-content: center;
+}

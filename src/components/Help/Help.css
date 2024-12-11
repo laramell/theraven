@@ -1,0 +1,33 @@
+body.help {
+    background: var(--red) !important;
+}
+#raven-container.help {
+    transform: rotate(155deg);
+    top: -150%;
+}
+
+#raven-container.screen img {
+    width: 170%;
+}
+main#help h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 3rem;
+    margin-bottom: 20px;
+}
+main#help h2,
+main#screen h2{
+    font-size: 2rem;
+    font-weight: 500;
+}
+main#help p,
+main#screen p {
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+main#help .button-grup {
+    justify-content: center;
+}
+main#help li {
+    margin-bottom: 6px;
+}

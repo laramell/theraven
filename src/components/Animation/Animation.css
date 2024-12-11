@@ -1,0 +1,119 @@
+#raven-container.animation {
+    display: none;
+}
+body.animation {
+    max-width: 100vw;
+    width: 100vw;
+    height: auto;
+    overflow: auto;
+}
+body.animation .geral {
+    max-width: 100vw;
+    height: auto;
+}
+body.animation main {
+    max-width: 100vw;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 100px;
+}
+body.animation main .head {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+body.animation main .head .title {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+body.animation main .head .title h1,
+body.animation main .head .title h2 {
+    text-align: left;
+}
+body.animation main .head .title h1 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+body.animation main .head .title h2 {
+    font-size: 1.5rem;
+}
+body.animation main .head  span {
+    display: block;
+    height: 90px;
+    width: 2px;
+    background-color: #FFFFFF;
+    content: "";
+    margin-left: 20px;
+    margin-right: 20px;
+}
+body.animation main .head  h3 {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: left;
+}
+body.animation main .controls {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+body.animation main .controls button, .frames-label  {
+    font-size: 1.2rem;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 700;
+}
+body.animation main .controls .frames-label {
+    background-color: var(--gray);
+}
+body.animation main .controls .frames-label button {
+    background: transparent;
+}
+body.animation main .controls button#play-now {
+    background: var(--yellow);
+    margin-left: 10px;
+}
+body.animation main .controls .dupla-btn {
+    display: flex;
+}
+.frames-label {
+    width: auto;
+    background-color: #FFFFFF;
+}
+input[type="number"] {
+    color: #FFFFFF;
+    border: none;
+    font-size: 1rem;
+    padding: 0.4rem 10px 0 30px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    background: transparent;
+}
+.frames-label label{
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.custom-number-input button {
+    padding: 0 !important;
+    color: #FFFFFF !important;
+}
+body.animation .frame-group {
+    height: 60vh;
+    align-items: flex-start;
+    overflow-y: scroll;
+
+}
