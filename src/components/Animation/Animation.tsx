@@ -162,6 +162,7 @@ const Animation = () => {
     const [frames, setFrames] = useState(framesOriginals);
     const [draggedFrameId, setDraggedFrameId] = useState<number | null>(null);
 
+
     useEffect(() => {
         // Adiciona a classe "animation" ao body quando o componente é montado
 
@@ -210,6 +211,32 @@ const Animation = () => {
     // Função para resetar os frames para o valor original
     const resetFrames = () => {
         setFrames(framesOriginals); // Restaura para o estado original
+    };
+
+    // Inicia o drag com o ID do frame
+    const handleDragStart = (id: number) => {
+        setDraggedFrameId(id);
+    };
+
+    // Permite o drop
+    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+    };
+
+    // Finaliza o drop, movendo o frame
+    const handleDrop = (id: number) => {
+        if (draggedFrameId === null || draggedFrameId === id) return;
+
+        const draggedIndex = frames.findIndex((frame) => frame.id === draggedFrameId);
+        const targetIndex = frames.findIndex((frame) => frame.id === id);
+
+        // Reordena os frames no array
+        const updatedFrames = [...frames];
+        const [draggedFrame] = updatedFrames.splice(draggedIndex, 1); // Remove o arrastado
+        updatedFrames.splice(targetIndex, 0, draggedFrame); // Adiciona no alvo
+
+        setFrames(updatedFrames);
+        setDraggedFrameId(null); // Reseta o estado
     };
 
     // Inicia a animação
